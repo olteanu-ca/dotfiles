@@ -1,0 +1,100 @@
+set border 0
+msgwait 9
+rudeness 11
+
+warp on
+set framesels 1234567890
+
+escape grave
+unbind grave
+
+unbind exclam
+unbind C-exclam
+bind semicolon exec
+bind exclam gselect 1
+bind at gselect 2
+bind numbersign gselect 3
+bind dollar gselect 4
+bind percent gselect 5
+bind asciicircum gselect 6
+bind ampersand gselect 7
+bind asterisk gselect 8
+bind parenleft gselect 9
+bind parenright gselect 0
+
+#bind ISO_Left_Tab focuslast
+bind Tab gother
+
+set bgcolor black
+set fgcolor white
+set font mono-medium-o-normal--0-0-0-0-m-0-iso8859-1
+
+set barpadding 6 1
+set bargravity ne
+#set winliststyle row
+set inputwidth 800
+
+bind F1 exec amixer set Master playback 10%-
+bind F2 exec amixer set Master playback 2%-
+bind F3 exec amixer set Master playback 2%+
+bind F4 exec amixer set Master playback 10%+
+
+bind F5 exec firefox -p default
+bind F6 exec drracket
+bind F10 exec (ratpoison -c escape\ grave -c 'bind F4 exec amixer set Master playback 10%+' && setxkbmap -model pc104 -layout us)
+bind F11 exec (ratpoison -c escape\ F4 && setxkbmap -model pc104 -layout ro -variant std)
+
+bind g abort
+bind Escape banish
+unbind C-x swap
+bind b swap
+
+unbind c
+bind grave exec kitty -1
+
+unbind p
+unbind n
+unbind k
+unbind C-k
+unbind K
+unbind l
+
+bind h focusleft
+bind j focusdown
+bind k focusup
+bind l focusright
+bind H prev
+bind J gnext
+bind K gprev
+bind L next
+bind o gnew
+bind O gnewbg
+
+bind x delete
+bind X kill
+
+unbind w
+unbind C-w
+bind w other
+unbind a
+unbind C-a
+bind z time
+bind a groups
+bind q windows
+
+bind g abort
+
+#bind slash exec physlock
+
+bind p redisplay
+
+alias cap exec scrot
+
+alias reload exec ratpoison -c source\ $HOME/.ratpoisonrc
+alias usb exec udevil mount /dev/sdc1
+alias usbq exec udevil unmount /dev/sdc1
+#alias resolution exec xrandr --output HDMI-0 --mode 1920x1080
+
+addhook switchgroup other
+
+banish
